@@ -24,7 +24,6 @@ plugins=(
     extract 
     zsh-autosuggestions 
     zsh-syntax-highlighting
-    poetry
     web-search
 )
 
@@ -39,8 +38,7 @@ export EDITOR='nvim'
 
 export PATH="/usr/local/opt/python@3.7/bin:$PATH"
 export PATH="/Users/fhv/.local/bin:$PATH"
-export PATH="$PATH:/Users/fhv/command-line-applications/nnn"
-export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="$PATH:/Users/fhv/command-line-applications/nnn:/Users/fhv/command-line-applications/flutter/bin:$PATH"
 export PATH="$PATH:/Users/fhv/Projects/aws_server/bin"
 
 export OPENAI_API_KEY="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"
