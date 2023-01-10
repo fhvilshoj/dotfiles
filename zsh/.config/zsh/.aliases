@@ -1,0 +1,13 @@
+weather () {
+    curl "https://wttr.in/${1}"
+}
+
+alias ibrew="arch -x86_64 /usr/local/bin/brew"
+alias lg="lazygit"
+alias ea="encord-active"
+alias cl="clear"
+
+alias pf="fzf --preview='bat --color=always --style=numbers --line-range=:500 {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
+
+pwl() { echo "$(pwd)/$1"; echo "$(pwd)/$1" | pbcopy }
+
