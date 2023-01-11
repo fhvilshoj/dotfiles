@@ -32,4 +32,13 @@ brew bundle check || brew bundle install
    ✓ stylua
 3. Install NNN
 
+# tmux
+
+To make tmux work properly, make sure to follow these steps.
+
+1. git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+2. `C-a :source-file ~/.tmux.conf` will make tmux load the plugin manager.
+3. `C-a I` will install the tmux plugins.
+
+
 ## ZSH

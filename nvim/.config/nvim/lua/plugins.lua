@@ -153,36 +153,35 @@ return require("packer").startup(function(use)
     use("folke/lsp-colors.nvim")
 
     -- [[ Copy code ]]
-
-    use({
-        "krivahtoo/silicon.nvim",
-        run = "./install.sh",
-        config = function()
-            require("silicon").setup({
-                -- The following key is required if you want to save image to file instead of clipboard
-                output = "/tmp/silicon",
-                -- The following keys are all optional
-                -- with default values
-                font = "Hack Nerd Font Mono=20",
-                theme = "Monokai Extended",
-                background = "#fff0",
-                shadow = {
-                    blur_radius = 0.0,
-                    offset_x = 0,
-                    offset_y = 0,
-                    color = "#0000",
-                },
-                pad_horiz = 80,
-                pad_vert = 80,
-                line_number = false,
-                line_pad = 2,
-                line_offset = 1,
-                tab_width = 4,
-                round_corner = true,
-                window_controls = true,
-            })
-        end,
-    })
+    -- use({
+    --     "krivahtoo/silicon.nvim",
+    --     run = "./install.sh",
+    --     config = function()
+    --         require("silicon").setup({
+    --             -- The following key is required if you want to save image to file instead of clipboard
+    --             output = "/tmp/silicon",
+    --             -- The following keys are all optional
+    --             -- with default values
+    --             font = "Hack Nerd Font Mono=20",
+    --             theme = "Monokai Extended",
+    --             background = "#fff0",
+    --             shadow = {
+    --                 blur_radius = 0.0,
+    --                 offset_x = 0,
+    --                 offset_y = 0,
+    --                 color = "#0000",
+    --             },
+    --             pad_horiz = 80,
+    --             pad_vert = 80,
+    --             line_number = false,
+    --             line_pad = 2,
+    --             line_offset = 1,
+    --             tab_width = 4,
+    --             round_corner = true,
+    --             window_controls = true,
+    --         })
+    --     end,
+    -- })
 
     -- [[ Code Completion ]]
     use({
