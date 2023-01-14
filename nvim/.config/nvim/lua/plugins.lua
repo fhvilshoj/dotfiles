@@ -403,7 +403,7 @@ return require("packer").startup(function(use)
                     require("telekasten").show_calendar()
                 end,
             })
-            nnoremap({ "<leader>zC", "CalendarT<CR>" })
+            nnoremap({ "<leader>zC", ":CalendarT<CR>" })
             nnoremap({
                 "<leader>zi",
                 function()
