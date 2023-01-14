@@ -8,17 +8,11 @@ vnoremap = function(t)
     vim.keymap.set("v", t[1], t[2], t[3])
 end
 
---- Windows and buffers
-map("n", "<C-h>", "<C-w>h", {})
-map("n", "<C-l>", "<C-w>l", {})
-map("n", "<C-j>", "<C-w>j", {})
-map("n", "<C-k>", "<C-w>k", {})
-
 -- Window resize
-nnoremap({ "<M-j>", ":resize -2<CR>" })
-nnoremap({ "<M-k>", ":resize +2<CR>" })
-nnoremap({ "<M-h>", ":vertical resize -10<CR>" })
-nnoremap({ "<M-l>", ":vertical resize +10<CR>" })
+nnoremap({ "<C-J>", ":resize -2<CR>" })
+nnoremap({ "<C-K>", ":resize +2<CR>" })
+nnoremap({ "<C-H>", ":vertical resize -10<CR>" })
+nnoremap({ "<C-L>", ":vertical resize +10<CR>" })
 
 -- Yank
 map("v", "<leader>yy", '"*y', {})
