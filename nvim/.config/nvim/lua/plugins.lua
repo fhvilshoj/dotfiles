@@ -220,15 +220,7 @@ return require("packer").startup(function(use)
         branch = "main",
         -- cmd = {"Lspsaga"},
         config = function()
-            require("lspsaga").init_lsp_saga({
-                code_action_lightbulb = {
-                    enable = true,
-                    sign = true,
-                    enable_in_insert = false,
-                    sign_priority = 20,
-                    virtual_text = false,
-                },
-            })
+            require("lspsaga").setup({})
         end,
     })
 
