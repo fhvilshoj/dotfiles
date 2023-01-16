@@ -17,6 +17,10 @@ return {
         "renerocksai/telekasten.nvim",
         module = "telekasten",
         keys = function()
+            if not pcall(require, "telescope") then
+                return {}
+            end
+
             local tk = require("telekasten")
             return {
                 { "<leader>zf", tk.find_notes, desc = "[Z] Find notes" },
