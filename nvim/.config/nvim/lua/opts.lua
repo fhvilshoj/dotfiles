@@ -17,7 +17,7 @@ opt.fileencoding = "utf8"
 -- [[ Theme ]]
 opt.syntax = "ON"
 opt.termguicolors = true
-cmd("colorscheme dracula") -- cmd:  Set the colorscheme
+vim.g.t_co = 256 -- Term colors
 
 -- [[ Search ]]
 opt.ignorecase = true
