@@ -41,7 +41,7 @@ export PATH="/Users/fhv/.local/bin:$PATH"
 export PATH="$PATH:/Users/fhv/command-line-applications/nnn:/Users/fhv/command-line-applications/flutter/bin:$PATH"
 export PATH="$PATH:/Users/fhv/Projects/aws_server/bin"
 
-export OPENAI_API_KEY="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"
+export OPENAI_API_KEY="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"
 
 export FZF_DEFAULT_OPS="--extended"
 export FZF_DEFAULT_CMD="fd --type f"
