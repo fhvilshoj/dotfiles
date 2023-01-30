@@ -98,13 +98,10 @@ return {
             { "<leader>fr", pickers.lsp_references, desc = "Find LSP refs." },
             { "<leader>fD", pickers.diagnostics, desc = "Find diabnostics" },
             { "<leader>fs", pickers.lsp_document_symbols, desc = "Find doc symbols" },
-            { "<leader>fS", pickers.lsp_dynamic_workspace_symbols, desc = " find workspace symbols" },
+            { "<leader>fS", pickers.lsp_dynamic_workspace_symbols, desc = "Find workspace symbols" },
             { "<leader>fo", pickers.vim_options, desc = "Find vim option" },
             { "<leader>fl", pickers.builtin, desc = "Find picker" },
             { "<leader>fR", pickers.resume, desc = "Resume find" },
-
-            { "[q", ":cprev<CR>zz", desc = "Next quick fix" },
-            { "]q", ":cnext<CR>zz", desc = "Prev. quick fix" },
         }
     end,
 }

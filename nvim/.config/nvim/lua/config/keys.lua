@@ -5,10 +5,6 @@ function M.register()
         vim.keymap.set("n", t[1], t[2], t[3])
     end
 
-    -- Quickfix
-    nnoremap({ "[q", ":cprev<CR>zz", {} })
-    nnoremap({ "]q", ":cnext<CR>zz", {} })
-
     -- Scrolling
     nnoremap({ "<C-d>", "<C-d>zz", {} })
     nnoremap({ "<C-u>", "<C-u>zz", {} })
@@ -38,6 +34,16 @@ function M.register()
         },
         z = { name = "zettelkasten" },
     }, { prefix = "<leader>" })
+    wk.register({
+        ["["] = {
+            name = "Prev",
+            q = { ":cprev<CR>zz", "Previous quickfix" },
+        },
+        ["]"] = {
+            name = "Next",
+            q = { ":cprev<CR>zz", "Next quickfix" },
+        },
+    })
 end
 
 return M
