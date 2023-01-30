@@ -14,3 +14,14 @@ spoon.SpoonInstall:andUse("AppLauncher", {
         modifiers = { "alt", "cmd", "shift", "ctrl" },
     },
 })
+
+spoon.SpoonInstall:andUse("HoldToQuit", {
+    config = {
+        duration = 1.2,
+    },
+    fn = function(htq)
+        print(htq)
+        htq:init()
+        htq:start()
+    end,
+})
