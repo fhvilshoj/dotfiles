@@ -88,6 +88,7 @@ return {
             { "<leader>fa", pickers.find_all_files, desc = "Find all files" },
             { "<leader>fb", pickers.current_buffer_fuzzy_find, desc = "Find in buffer" },
             { "<leader>fB", pickers.buffers, desc = "Find buffer" },
+            { "<leader>fc", pickers.command_history, desc = "Find command history" },
 
             { "<leader>fp", pickers.grep_promp, desc = "Grep prompt" },
             { "<leader>fg", pickers.git_files, desc = "Find git files" },
@@ -97,13 +98,10 @@ return {
             { "<leader>fr", pickers.lsp_references, desc = "Find LSP refs." },
             { "<leader>fD", pickers.diagnostics, desc = "Find diabnostics" },
             { "<leader>fs", pickers.lsp_document_symbols, desc = "Find doc symbols" },
-            { "<leader>fS", pickers.lsp_dynamic_workspace_symbols, desc = " find workspace symbols" },
+            { "<leader>fS", pickers.lsp_dynamic_workspace_symbols, desc = "Find workspace symbols" },
             { "<leader>fo", pickers.vim_options, desc = "Find vim option" },
             { "<leader>fl", pickers.builtin, desc = "Find picker" },
             { "<leader>fR", pickers.resume, desc = "Resume find" },
-
-            { "[q", ":cprev<CR>zz", desc = "Next quick fix" },
-            { "]q", ":cnext<CR>zz", desc = "Prev. quick fix" },
         }
     end,
 }

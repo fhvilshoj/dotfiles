@@ -50,6 +50,10 @@ function M.git_files()
     end
 end
 
+function M.command_history()
+    builtin.command_history(dropdown)
+end
+
 function M.live_grep()
     builtin.live_grep({
         file_ignore_patterns = { ".git/*" },

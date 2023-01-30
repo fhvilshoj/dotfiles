@@ -18,54 +18,81 @@ return {
             end
             require("gitsigns").setup({
                 on_attach = function(bufnr)
-                    local gs = package.loaded.gitsigns
-
-                    local function map(mode, l, r, opts)
-                        opts = opts or {}
-                        opts.buffer = bufnr
-                        vim.keymap.set(mode, l, r, opts)
+                    gs = package.loaded.gitsigns
+                    if gs == nil then
+                        print("Nope")
+                        return
                     end
+                    local success, wk = pcall(require, "which-key")
+                    if not success then
+                        print("Nope 2")
+                        return
+                    end
+                    wk.register({
+                        G = {
+                            s = { ":Gitsigns stage_hunk<CR>", "Stage hunk" },
+                            r = { ":Gitsigns reset_hunk<CR>", "Reset hunk" },
+                        },
+                    }, { mode = { "n", "v" } })
 
-                    -- Navigation
-                    map("n", "]c", function()
-                        if vim.wo.diff then
-                            return "]c"
-                        end
-                        vim.schedule(function()
-                            gs.next_hunk()
-                        end)
-                        return "<Ignore>"
-                    end, { expr = true })
+                    wk.register({
+                        t = {
+                            name = "toggle",
+                            b = { gs.toggle_current_line_blame, "Git blame" },
+                            d = { gs.toggle_deleted, "Git deletes" },
+                        },
 
-                    map("n", "[c", function()
-                        if vim.wo.diff then
-                            return "[c"
-                        end
-                        vim.schedule(function()
-                            gs.prev_hunk()
-                        end)
-                        return "<Ignore>"
-                    end, { expr = true })
-
-                    -- Actions
-                    map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
-                    map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
-                    map("n", "<leader>hS", gs.stage_buffer)
-                    map("n", "<leader>hu", gs.undo_stage_hunk)
-                    map("n", "<leader>hR", gs.reset_buffer)
-                    map("n", "<leader>hp", gs.preview_hunk)
-                    map("n", "<leader>hb", function()
-                        gs.blame_line({ full = true })
-                    end)
-                    map("n", "<leader>tb", gs.toggle_current_line_blame)
-                    map("n", "<leader>hd", gs.diffthis)
-                    map("n", "<leader>hD", function()
-                        gs.diffthis("~")
-                    end)
-                    map("n", "<leader>td", gs.toggle_deleted)
-
-                    -- Text object
-                    map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+                        G = {
+                            name = "Git",
+                            S = { gs.stage_buffer, "Stage buffer" },
+                            u = { gs.undo_stage_hunk, "Undo stage hunk" },
+                            R = { gs.reset_buffer, "Reset buffer" },
+                            p = { gs.preview_hunk, "Preview hunk" },
+                            b = {
+                                function()
+                                    gs.blame_line({ full = true })
+                                end,
+                                "Blame line",
+                            },
+                            d = { gs.diffthis, "Diff this" },
+                            D = {
+                                function()
+                                    gs.diffthis("~")
+                                end,
+                                "Diff this (~)",
+                            },
+                        },
+                    }, { prefix = "<leader>" })
+                    wk.register({
+                        ["]"] = {
+                            h = {
+                                function()
+                                    if vim.wo.diff then
+                                        return "]c"
+                                    end
+                                    vim.schedule(function()
+                                        gs.next_hunk()
+                                    end)
+                                    return "<Ignore>"
+                                end,
+                                "Next hunk",
+                            },
+                        },
+                        ["["] = {
+                            h = {
+                                function()
+                                    if vim.wo.diff then
+                                        return "[c"
+                                    end
+                                    vim.schedule(function()
+                                        gs.prev_hunk()
+                                    end)
+                                    return "<Ignore>"
+                                end,
+                                "Previous hunk",
+                            },
+                        },
+                    })
                 end,
             })
         end,
