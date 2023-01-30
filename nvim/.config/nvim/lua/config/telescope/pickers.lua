@@ -1,6 +1,6 @@
 local builtin = require("telescope.builtin")
 local themes = require("telescope.themes")
-local dropdown = themes.get_dropdown({
+local simple_dropdown = themes.get_dropdown({
     winblend = 10,
     border = true,
     previewer = false,
@@ -32,11 +32,12 @@ function M.edit_directory(title, dir)
 end
 
 function M.builtin()
-    builtin.builtin(dropdown)
+    builtin.builtin(simple_dropdown)
 end
 
 function M.find_files()
-    builtin.find_files({ no_ignore = false })
+    builtin.find_files()
+    -- builtin.find_files({ no_ignore = false })
 end
 
 function M.find_all_files()
@@ -44,14 +45,14 @@ function M.find_all_files()
 end
 
 function M.git_files()
-    local ok = pcall(require("telescope.builtin").git_files, dropdown)
+    local ok = pcall(require("telescope.builtin").git_files, simple_dropdown)
     if not ok then
         require("telescope.builtin").find_files()
     end
 end
 
 function M.command_history()
-    builtin.command_history(dropdown)
+    builtin.command_history(simple_dropdown)
 end
 
 function M.live_grep()

@@ -7,21 +7,19 @@ return {
         { "nvim-lua/popup.nvim" },
         { "nvim-telescope/telescope-symbols.nvim" },
     },
-    opts = function()
+    config = function()
         if not pcall(require, "telescope") then
             return {}
         end
 
         local actions = require("telescope.actions")
-        return {
+        require("telescope").setup({
             defaults = {
                 prompt_prefix = "   ",
                 selection_caret = "❯ ",
                 winblend = 10,
-                layout_strategy = "horizontal",
                 layout_config = {
                     prompt_position = "top",
-                    -- preview_cutoff = 120,
                     horizontal = {
                         width_padding = 0.1,
                         height_padding = 0.1,
@@ -64,9 +62,7 @@ return {
                 grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
                 qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
             },
-        }
-    end,
-    config = function()
+        })
         require("telescope").load_extension("lazygit")
         require("telescope").load_extension("harpoon")
     end,
