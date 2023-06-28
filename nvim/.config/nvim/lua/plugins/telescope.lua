@@ -84,7 +84,7 @@ return {
             { "<leader>fa", pickers.find_all_files, desc = "Find all files" },
             { "<leader>fb", pickers.current_buffer_fuzzy_find, desc = "Find in buffer" },
             { "<leader>fB", pickers.buffers, desc = "Find buffer" },
-            { "<leader>fc", pickers.command_history, desc = "Find command history" },
+            { "<leader>fc", pickers.command_history, desc = "Find command history", mode = { "v", "n" } },
 
             { "<leader>fp", pickers.grep_promp, desc = "Grep prompt" },
             { "<leader>fg", pickers.git_files, desc = "Find git files" },

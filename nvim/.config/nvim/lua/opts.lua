@@ -26,10 +26,15 @@ opt.incsearch = true
 opt.hlsearch = true
 
 -- [[ Whitespace ]]
+-- opt.expandtab = true
+-- opt.shiftwidth = 4
+-- opt.softtabstop = 4
+-- opt.tabstop = 4
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.softtabstop = 2
 opt.expandtab = true
-opt.shiftwidth = 4
-opt.softtabstop = 4
-opt.tabstop = 4
+opt.smartindent = true
 
 -- [[ Indent ]]
 opt.copyindent = true
@@ -42,8 +47,8 @@ opt.splitright = true
 opt.splitbelow = true
 
 -- [[ Backup ]]
-opt.backupdir = "./.backup,.,/tmp"
-opt.directory = ".,./.backup,/tmp"
+opt.backupdir = "/tmp/.nvim_backup"
+opt.directory = "/tmp/.nvim_backup"
 
 -- [[ Spell ]]
 opt.spell = true
