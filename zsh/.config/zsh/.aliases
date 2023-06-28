@@ -4,10 +4,45 @@ weather () {
 
 alias ibrew="arch -x86_64 /usr/local/bin/brew"
 alias lg="lazygit"
-alias ea="encord-active"
 alias cl="clear"
+alias m='cd "$(xplr --print-pwd-as-result)"'
+
+alias ea="encord-active"
+alias eap="ENV=prod encord-active visualize"
+alias eav="encord-active visualize"
 
 alias pf="fzf --preview='bat --color=always --style=numbers --line-range=:500 {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
 
 pwl() { echo "$(pwd)/$1"; echo "$(pwd)/$1" | pbcopy }
+
+sea() {
+    cd /Users/fhv/PycharmProjects/encord-active
+    source $(poetry env info --path)/bin/activate
+    cd -
+}
+
+mkeavenv() {
+    if hash deactivate 2>/dev/null; then
+        deactivate
+    fi
+    if [ -d $PWD/venv ]; then
+      vared -p 'Want to reuse old venv?: ' -c reply
+      echo    # (optional) move to a new line
+      if [[ ! $reply =~ ^[Yy]$ ]] then
+        echo "Removing old env"
+        rm -rf venv 
+      else
+        echo "Reusing environment"
+      fi
+    fi
+
+    if [ ! -d $PWD/venv ]; then
+      echo "Venv not existing, creating it"
+      pyenv local 3.10
+      python -m venv venv
+    fi
+
+    source $PWD/venv/bin/activate
+    python -m pip install encord-active
+}
 
