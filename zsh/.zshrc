@@ -40,7 +40,6 @@ export EDITOR='nvim'
 export PATH="/usr/local/opt/python@3.7/bin:$PATH"
 export PATH="/Users/fhv/.local/bin:$PATH"
 export PATH="$PATH:/Users/fhv/command-line-applications/nnn"
-export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$PATH:/Users/fhv/Projects/aws_server/bin"
 
 export OPENAI_API_KEY="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"
@@ -53,6 +52,8 @@ export NNN_BMS="h:~;p:~/PycharmProjects/data-quality-pocs;t:/tmp"
 export NNN_PLUG='f:finder;o:fzopen;v:imgview;j:autojump;p:preview-tui'
 export NNN_USE_EDITOR=1
 export NNN_FIFO="/tmp/nnn.fifo"
+
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 source $ZSH/oh-my-zsh.sh
 
@@ -130,4 +131,20 @@ n ()
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/fhv/command-line-applications/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/fhv/command-line-applications/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/fhv/command-line-applications/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/fhv/command-line-applications/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
