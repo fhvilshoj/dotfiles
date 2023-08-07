@@ -1,5 +1,17 @@
 return {
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    event = "BufRead",
+    config = function()
+      require("config.treesitter")
+    end,
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      "nvim-treesitter/nvim-treesitter-context",
+    },
+  },
   {
     "windwp/nvim-spectre",
     dependencies = {
