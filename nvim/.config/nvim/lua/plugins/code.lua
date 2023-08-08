@@ -92,8 +92,14 @@ return {
     keys = {
       -- Code
       {
+        "<leader>cH",
+        "<cmd>Lspsaga incoming_calls<CR>",
+        silent = true,
+        desc = "Find incoming calls",
+      },
+      {
         "<leader>cu",
-        "<cmd>Lspsaga lsp_finder<CR>",
+        "<cmd>Lspsaga finder<CR>",
         silent = true,
         desc = "Find usage",
       },
@@ -109,6 +115,18 @@ return {
         "<cmd>Lspsaga rename<CR>",
         silent = true,
         desc = "Rename",
+      },
+      {
+        "<leader>co",
+        "<cmd>Lspsaga outline<CR>",
+        silent = true,
+        desc = "Show outline",
+      },
+      {
+        "<leader>ct",
+        "<cmd>Lspsaga peek_type_definition<CR>",
+        silent = true,
+        desc = "Peak type definition",
       },
       {
         "<leader>cp",
