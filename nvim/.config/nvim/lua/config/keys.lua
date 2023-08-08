@@ -9,6 +9,12 @@ function M.register()
   nnoremap({ "<C-d>", "<C-d>zz", {} })
   nnoremap({ "<C-u>", "<C-u>zz", {} })
 
+  -- Window resizing
+  nnoremap({ "<M-j>", ":resize -2<CR>" })
+  nnoremap({ "<M-k>", ":resize +2<CR>" })
+  nnoremap({ "<M-h>", ":vertical resize -10<CR>" })
+  nnoremap({ "<M-l>", ":vertical resize +10<CR>" })
+
   local wk = require("which-key")
   wk.register({
     a = { name = "formatter", b = { "<cmd>'<,'>.!genericformat --format black<CR>", mode = { "v", "n" } } },
