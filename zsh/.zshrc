@@ -89,7 +89,7 @@ fi; done;
 echo "${paths[*]}"')"
 export PATH="/Users/fhv/.pyenv/shims:${PATH}"
 export PYENV_SHELL=zsh
-source '/opt/homebrew/Cellar/pyenv/2.3.11/completions/pyenv.zsh'
+source '/opt/homebrew/Cellar/pyenv/2.3.23/completions/pyenv.zsh'
 command pyenv rehash 2>/dev/null
 pyenv() {
   local command
