@@ -41,7 +41,8 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     keys = {
-      { "<leader>cs", ":lua require('neogen').generate()<CR>", desc = "Generate Stub" },
+      { "<leader>cs", ":lua require('neogen').generate()<CR>",                  desc = "Generate Stub" },
+      { "<leader>cf", ":lua require('neogen').generate({ type = 'func' })<CR>", desc = "Generate function stub" },
     },
     config = true,
   },

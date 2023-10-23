@@ -2,14 +2,14 @@ weather () {
     curl "https://wttr.in/${1}"
 }
 
+alias kk=k9s
 alias ibrew="arch -x86_64 /usr/local/bin/brew"
 alias lg="lazygit"
 alias cl="clear"
-alias m='cd "$(xplr --print-pwd-as-result)"'
+# alias m='cd "$(xplr --print-pwd-as-result)"'
 
 alias ea="encord-active"
-alias eap="ENV=prod encord-active visualize"
-alias eav="encord-active visualize"
+alias sep="source ~/reusable_venvs/ea-pypi/bin/activate"
 
 alias pf="fzf --preview='bat --color=always --style=numbers --line-range=:500 {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
 
@@ -17,6 +17,11 @@ pwl() { echo "$(pwd)/$1"; echo "$(pwd)/$1" | pbcopy }
 
 sea() {
     cd /Users/fhv/PycharmProjects/encord-active
+    source $(poetry env info --path)/bin/activate
+    cd -
+}
+sei() {
+    cd /Users/fhv/Projects/encord-active-private
     source $(poetry env info --path)/bin/activate
     cd -
 }
