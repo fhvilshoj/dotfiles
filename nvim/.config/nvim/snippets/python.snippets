@@ -1,0 +1,86 @@
+snippet sdk
+    from pathlib import Path
+
+    import typer
+    from encord import EncordUserClient
+
+    def ${1:func}(ssh_key_path: Path = Path("~/.ssh/id_ed25519")):
+        client = EncordUserClient.create_with_ssh_private_key(
+            ssh_key_path.expanduser().resolve().read_text(),
+        )
+        ${0:$VISUAL}
+        
+  if __name__ == '__main__':
+      typer.run(${1:func})
+
+
+snippet selectproject
+    from datetime import datetime, timedelta
+
+    from encord import EncordUserClient
+    from InquirerPy import inquirer as inq
+    from InquirerPy.base.control import Choice
+
+    def select_projects(client: EncordUserClient) -> str:
+        choices = [
+            Choice(p.project_hash, p.titlb)
+            for p in map(
+                lambda d: d["project"],
+                client.get_projects(created_after=datetime.now() - timedelta(days=30)),
+            )
+        ]
+        return inq.fuzzy("Select projects", choices, multiselect=False, vi_mode=True).execute()
+
+
+snippet selectprojects
+    from datetime import datetime, timedelta
+
+    from encord import EncordUserClient
+    from InquirerPy import inquirer as inq
+    from InquirerPy.base.control import Choice
+
+    def select_projects(client: EncordUserClient) -> list[str]:
+        choices = [
+            Choice(p.project_hash, p.titlb)
+            for p in map(
+                lambda d: d["project"],
+                client.get_projects(created_after=datetime.now() - timedelta(days=30)),
+            )
+        ]
+        return inq.fuzzy("Select projects", choices, multiselect=True, vi_mode=True).execute()
+
+
+snippet selectdataset
+    from datetime import datetime, timedelta
+
+    from encord import EncordUserClient
+    from InquirerPy import inquirer as inq
+    from InquirerPy.base.control import Choice
+
+    def select_datasets(client: EncordUserClient) -> str:
+        choices = [
+            Choice(p.dataset_hash, p.title)
+            for p in map(
+                lambda d: d["dataset"],
+                client.get_datasets(created_after=datetime.now() - timedelta(days=30)),
+            )
+        ]
+        return inq.fuzzy("Select datasets", choices, multiselect=False, vi_mode=True).execute()
+
+
+snippet selectdatasets
+    from datetime import datetime, timedelta
+
+    from encord import EncordUserClient
+    from InquirerPy import inquirer as inq
+    from InquirerPy.base.control import Choice
+
+    def select_datasets(client: EncordUserClient) -> list[str]:
+        choices = [
+            Choice(p.dataset_hash, p.title)
+            for p in map(
+                lambda d: d["dataset"],
+                client.get_datasets(created_after=datetime.now() - timedelta(days=30)),
+            )
+        ]
+        return inq.fuzzy("Select datasets", choices, multiselect=True, vi_mode=True).execute()

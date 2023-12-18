@@ -10,6 +10,7 @@ alias cl="clear"
 
 alias ea="encord-active"
 alias sep="source ~/reusable_venvs/ea-pypi/bin/activate"
+alias ses="source ~/reusable_venvs/encord-sdk/bin/activate"
 
 alias pf="fzf --preview='bat --color=always --style=numbers --line-range=:500 {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
 

@@ -5,17 +5,29 @@ spoon.SpoonInstall:andUse("AppLauncher", {
     a = "Brain.fm App",
     b = "Brave Browser",
     c = "Google Chrome",
-    d = "Discord",
+    --- d = ""
+    --- e = "emojis",  -- defined elsewhere
     f = "Finder",
+    --- g = "",
+    --- h = "",
     i = "Previewer",
+    --- j = "",
+    --- k = "",
+    --- l = "",
     m = "Spotify",
     n = "Notion",
+    --- o = "Raycast:: calendar",
     p = "System Preferences",
+    q = "Beekeeper Studio",
+    --- r = "Raycast", -- defined elsewhere
     s = "Slack",
     t = "iTerm",
-    w = "WhatsApp",
+    --- u = "",
+    --- v = "Raycast: paste",
+    w = "Spark Desktop",
+    --- x = "",
+    --- y = "",
     z = "zoom.us",
-    q = "1Password",
   },
   config = {
     modifiers = { "alt", "cmd", "shift", "ctrl" },
@@ -38,8 +50,8 @@ spoon.SpoonInstall:andUse("WindowScreenLeftAndRight", {
   },
   fn = function(wslr)
     wslr:bindHotkeys({
-      screen_left = { { "alt", "cmd", "shift", "ctrl" }, "Left" },
-      screen_right = { { "alt", "cmd", "shift", "ctrl" }, "Right" },
+      screen_left = { { "alt", "cmd", "shift", "ctrl" }, "[" },
+      screen_right = { { "alt", "cmd", "shift", "ctrl" }, "]" },
     })
   end,
 })
