@@ -9,9 +9,9 @@ snippet sdk
             ssh_key_path.expanduser().resolve().read_text(),
         )
         ${0:$VISUAL}
-        
-  if __name__ == '__main__':
-      typer.run(${1:func})
+
+    if __name__ == '__main__':
+        typer.run(${1:func})
 
 
 snippet selectproject
@@ -21,7 +21,7 @@ snippet selectproject
     from InquirerPy import inquirer as inq
     from InquirerPy.base.control import Choice
 
-    def select_projects(client: EncordUserClient) -> str:
+    def select_project(client: EncordUserClient) -> str:
         choices = [
             Choice(p.project_hash, p.titlb)
             for p in map(
@@ -57,7 +57,7 @@ snippet selectdataset
     from InquirerPy import inquirer as inq
     from InquirerPy.base.control import Choice
 
-    def select_datasets(client: EncordUserClient) -> str:
+    def select_dataset(client: EncordUserClient) -> str:
         choices = [
             Choice(p.dataset_hash, p.title)
             for p in map(
@@ -84,3 +84,29 @@ snippet selectdatasets
             )
         ]
         return inq.fuzzy("Select datasets", choices, multiselect=True, vi_mode=True).execute()
+
+snippet initlabels
+    from typing import Optional
+
+    from encord import Project
+    from encord.objects import LabelRowV2
+
+    def init_labels(project: Project, label_rows: Optional[list[LabelRowV2]] = None, batch_size: int = 200) -> list[LabelRowV2]:
+        label_rows = label_rows or project.list_label_rows_v2()
+        for start in range(0, len(label_rows), batch_size):
+            with project.create_bundle() as bundle:
+                for lr in label_rows[start:start+batch_size]:
+                    lr.initialise_labels(bundle=bundle)
+        return label_rows
+
+snippet savelabels
+    from encord import Project
+    from encord.objects import LabelRowV2
+
+    def save_label_rows(
+        project: Project, label_rows: list[LabelRowV2], batch_size: int = 200
+    ):
+        for start in range(0, len(label_rows), batch_size):
+            with project.create_bundle() as bundle:
+                for lr in label_rows[start : start + batch_size]:
+                    lr.save(bundle=bundle)
