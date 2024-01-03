@@ -1,10 +1,9 @@
 --[[ opts.lua ]]
 local opt = vim.opt
-local cmd = vim.api.nvim_command
 local auto_cmd = vim.api.nvim_create_autocmd
 
 --[[ Context ]]
-opt.colorcolumn = "81"
+opt.colorcolumn = "120"
 opt.number = true
 opt.relativenumber = true
 opt.scrolloff = 4
@@ -26,10 +25,6 @@ opt.incsearch = true
 opt.hlsearch = true
 
 -- [[ Whitespace ]]
--- opt.expandtab = true
--- opt.shiftwidth = 4
--- opt.softtabstop = 4
--- opt.tabstop = 4
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.softtabstop = 4
