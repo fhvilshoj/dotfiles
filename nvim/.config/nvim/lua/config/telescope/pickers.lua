@@ -45,10 +45,10 @@ function M.find_all_files()
 end
 
 function M.git_files()
-    local ok = pcall(require("telescope.builtin").git_files, simple_dropdown)
-    if not ok then
-        require("telescope.builtin").find_files()
-    end
+    builtin.git_files()
+    -- local ok = pcall(builtin.git_files)
+    -- if not ok then
+    -- end
 end
 
 function M.command_history()
