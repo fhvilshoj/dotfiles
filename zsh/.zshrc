@@ -40,7 +40,9 @@ export EDITOR='nvim'
 export PATH="/usr/local/opt/python@3.7/bin:$PATH"
 export PATH="/Users/fhv/.local/bin:$PATH"
 export PATH="$PATH:/Users/fhv/command-line-applications/nnn"
+export PATH="$PATH:/Users/fhv/command-line-applications/openapitools"
 export PATH="$PATH:/Users/fhv/Projects/aws_server/bin"
+export PATH="$PATH:/Users/fhv/go/bin"
 
 export OPENAI_API_KEY="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"
 
