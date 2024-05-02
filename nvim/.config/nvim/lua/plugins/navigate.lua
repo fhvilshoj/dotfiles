@@ -10,9 +10,9 @@ return {
             user.set_repeat_keys("<enter>", "<backspace>")
         end,
         keys = {
-            { "<leader>sf", "<Plug>(leap-forward)",     mode = { "n", "o", "x" }, desc = "Leap forward" },
-            { "<leader>sb", "<Plug>(leap-backward)",    mode = { "n", "o", "x" }, desc = "Leap backward" },
-            { "<leader>sp", "<Plug>(leap-from-window)", mode = { "n", "o", "x" }, desc = "Leap other panes" },
+            { "<leader>lf", "<Plug>(leap-forward)",     mode = { "n", "o", "x" }, desc = "Leap forward" },
+            { "<leader>lb", "<Plug>(leap-backward)",    mode = { "n", "o", "x" }, desc = "Leap backward" },
+            { "<leader>lp", "<Plug>(leap-from-window)", mode = { "n", "o", "x" }, desc = "Leap other panes" },
         },
     },
 }
