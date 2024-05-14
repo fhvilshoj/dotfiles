@@ -23,9 +23,10 @@ function M.register()
         D = { name = "DB" },
         f = { name = "find" },
         g = { name = "go-to" },
-        l = { name = "leap" },
         h = { name = "harpoon" },
         m = { name = "markdown" },
+        s = { name = "jump" },
+        S = { name = "Jump Treesitter" },
         w = {
             name = "window", -- optional group name
             j = { ":resize -2<CR>", "Resize (h-)" },

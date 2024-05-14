@@ -1,18 +1,16 @@
 return {
     {
-        "ggandor/leap.nvim",
-        lazy = false,
-        init = function()
-            local leap = require("leap")
-            local user = require("leap.user")
-            leap.opts.special_keys.prev_target = "<backspace>"
-            leap.opts.special_keys.prev_group = "<backspace>"
-            user.set_repeat_keys("<enter>", "<backspace>")
-        end,
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        ---@type Flash.Config
+        opts = {},
+        -- stylua: ignore
         keys = {
-            { "<leader>lf", "<Plug>(leap-forward)",     mode = { "n", "o", "x" }, desc = "Leap forward" },
-            { "<leader>lb", "<Plug>(leap-backward)",    mode = { "n", "o", "x" }, desc = "Leap backward" },
-            { "<leader>lp", "<Plug>(leap-from-window)", mode = { "n", "o", "x" }, desc = "Leap other panes" },
+            { "<leader>s", mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+            { "<leader>S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+            { "r",         mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+            { "R",         mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+            { "<c-s>",     mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
         },
     },
 }
