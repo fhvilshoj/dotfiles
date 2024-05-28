@@ -110,3 +110,10 @@ snippet savelabels
             with project.create_bundle() as bundle:
                 for lr in label_rows[start : start + batch_size]:
                     lr.save(bundle=bundle)
+
+snippet mpl
+	import matplotlib.pyplot pyplot as plt
+	from matplotlib.patches import Rectangle, Polygon
+	fig, ax = plt.subplots()
+	${0}
+	
