@@ -24,6 +24,7 @@ function M.register()
         f = { name = "find" },
         g = { name = "go-to" },
         h = { name = "harpoon" },
+        i = { name = "iron" },
         m = { name = "markdown" },
         s = { name = "jump" },
         S = { name = "Jump Treesitter" },

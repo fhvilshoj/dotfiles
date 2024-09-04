@@ -13,7 +13,7 @@ spoon.SpoonInstall:andUse("AppLauncher", {
         i = "Previewer",
         --- j = "",
         --- k = "",
-        --- l = "",
+        l = "Linear",
         m = "Spotify",
         n = "Notion",
         --- o = "Raycast:: calendar",

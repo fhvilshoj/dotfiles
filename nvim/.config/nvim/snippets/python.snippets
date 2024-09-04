@@ -117,3 +117,47 @@ snippet mpl
 	fig, ax = plt.subplots()
 	${0}
 	
+snippet sdkprojectdataset
+	from pathlib import Path
+	from typing import Annotated, Literal
+
+	import typer
+	from encord import EncordUserClient
+	from encord.dataset import DatasetAccessSettings
+	from encord.objects.project import ProjectDataset
+
+
+	def ${1:func}(
+    	project_hash: str,
+    	ssh_key_path: Path = Path("~/.ssh/encord_frederik_dev"),
+    	load_metadata: bool = False,
+    	domain: Annotated[
+        	Literal[
+            	"https://api.encord.com",
+            	"https://dev.api.encord.com",
+            	"https://staging.api.encord.com",
+        	],
+        	typer.Argument(show_choices=True),
+    	] = "https://dev.api.encord.com",
+	):
+    	client = EncordUserClient.create_with_ssh_private_key(
+        	ssh_key_path.expanduser().resolve().read_text(),
+        	domain=domain,
+    	)
+    	access_settings = DatasetAccessSettings(fetch_client_metadata=load_metadata)
+    	project = client.get_project(project_hash)
+    	datasets = [
+        	client.get_dataset(d.dataset_hash, dataset_access_settings=access_settings)
+        	for d in ProjectDataset.from_list(project.datasets)
+    	]
+    	data_rows = {dr.uid: dr for dataset in datasets for dr in dataset.data_rows}
+    	label_rows = project.list_label_rows_v2()
+    	with project.create_bundle() as bundle:
+        	for lr in label_rows:
+            	lr.initialise_labels(bundle=bundle)
+
+        ${0:$VISUAL}
+
+	if __name__ == "__main__":
+    	typer.run(${1:func})
+

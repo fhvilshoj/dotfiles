@@ -16,6 +16,7 @@ return {
                     },
                 },
             }
+            vim.api.nvim_create_augroup("firenvim", { clear = true })
             vim.api.nvim_create_autocmd({ "BufEnter" }, {
                 group = "firenvim",
                 pattern = "colab.research.google.com_*.txt",
