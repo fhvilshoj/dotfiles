@@ -27,8 +27,8 @@ return {
                 on_attach = auto_format_on_save,
                 sources = {
                     null_ls.builtins.hover.dictionary,
-                    null_ls.builtins.formatting.isort,
-                    null_ls.builtins.formatting.black,
+                    -- null_ls.builtins.formatting.isort,
+                    -- null_ls.builtins.formatting.black,
                     null_ls.builtins.formatting.stylua,
                     null_ls.builtins.formatting.taplo,
                     null_ls.builtins.formatting.prettier.with({

@@ -20,6 +20,13 @@ return {
         },
     },
     {
+        "tadmccorkle/markdown.nvim",
+        ft = "markdown", -- or 'event = "VeryLazy"'
+        opts = {
+            -- configuration here or empty for defaults
+        },
+    },
+    {
         "windwp/nvim-spectre",
         dependencies = {
             "nvim-lua/popup.nvim",
@@ -51,7 +58,15 @@ return {
             { "<leader>cs", ":lua require('neogen').generate()<CR>",                  desc = "Generate Stub" },
             { "<leader>cf", ":lua require('neogen').generate({ type = 'func' })<CR>", desc = "Generate function stub" },
         },
-        config = true,
+        config = {
+            languages = {
+                python = {
+                    template = {
+                        annotation_convention = "google_docstrings",
+                    },
+                },
+            },
+        },
     },
 
     {
@@ -88,6 +103,17 @@ return {
             lsp_conf.tsserver.setup(settings)
             lsp_conf.tailwindcss.setup(settings)
             lsp_conf.prismals.setup(settings)
+
+            local on_attach = function(client, bufnr)
+                if client.name == "ruff_lsp" then
+                    -- Disable hover in favor of Pyright
+                    -- client.server_capabilities.hoverProvider = false
+                end
+            end
+
+            require("lspconfig").ruff_lsp.setup({
+                on_attach = on_attach,
+            })
         end,
     },
     {
