@@ -42,6 +42,9 @@ return {
         "Shatur/neovim-session-manager",
         lazy = false,
         opts = function()
+            vim.isarray = function()
+                return false
+            end
             return {
                 autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir,
                 autosave_only_in_session = true,

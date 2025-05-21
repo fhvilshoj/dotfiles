@@ -16,46 +16,45 @@ function M.register()
     nnoremap({ "<M-l>", ":vertical resize +10<CR>" })
 
     local wk = require("which-key")
-    wk.register({
-        a = { name = "formatter", b = { "<cmd>'<,'>.!genericformat --format black<CR>", mode = { "v", "n" } } },
-        b = { name = "buffer" },
-        c = { name = "code" },
-        D = { name = "DB" },
-        f = { name = "find" },
-        g = { name = "go-to" },
-        h = { name = "harpoon" },
-        i = { name = "iron" },
-        m = { name = "markdown" },
-        s = { name = "jump" },
-        S = { name = "Jump Treesitter" },
-        w = {
-            name = "window", -- optional group name
-            j = { ":resize -2<CR>", "Resize (h-)" },
-            k = { ":resize +2<CR>", "Resize (h+)" },
-            h = { ":vertical resize -10<CR>", "Resize (v-)" },
-            l = { ":vertical resize +10<CR>", "Resize (v+)" },
-            ["_"] = { "<C-w>_", "Full height" },
-            ["|"] = { "<C-w>|", "Full width" },
-            ["="] = { "<C-w>=", "Distr. equally" },
-            f = { "<C-w>|<C-w>_", "Full. screen" },
+    wk.add({
+        { "<leader>D",  group = "DB" },
+        { "<leader>S",  group = "Jump Treesitter" },
+        { "<leader>a",  group = "formatter" },
+        { "<leader>b",  group = "buffer" },
+        { "<leader>c",  group = "code" },
+        { "<leader>f",  group = "find" },
+        { "<leader>g",  group = "go-to" },
+        { "<leader>h",  group = "harpoon" },
+        { "<leader>i",  group = "iron" },
+        { "<leader>m",  group = "markdown" },
+        { "<leader>s",  group = "jump" },
+        { "<leader>w",  group = "window" },
+        { "<leader>w=", "<C-w>=",                   desc = "Distr. equally" },
+        { "<leader>w_", "<C-w>_",                   desc = "Full height" },
+        { "<leader>wf", "<C-w>|<C-w>_",             desc = "Full. screen" },
+        { "<leader>wh", ":vertical resize -10<CR>", desc = "Resize (v-)" },
+        { "<leader>wj", ":resize -2<CR>",           desc = "Resize (h-)" },
+        { "<leader>wk", ":resize +2<CR>",           desc = "Resize (h+)" },
+        { "<leader>wl", ":vertical resize +10<CR>", desc = "Resize (v+)" },
+        { "<leader>w|", "<C-w>|",                   desc = "Full width" },
+        { "<leader>y",  group = "yank" },
+        {
+            "<leader>yy",
+            '"*y',
+            desc = "Yank to clipboard",
+            mode = { "n", "v" },
         },
-        y = {
-            name = "yank",
-            y = { '"*y', "Yank to clipboard", mode = { "n", "v" } },
-        },
-        z = { name = "zettelkasten" },
-    }, { prefix = "<leader>" })
-    wk.register({
-        ["["] = {
-            name = "Prev",
-            b = { ":bp<CR>", "Previous buffer" },
-            q = { ":cprev<CR>zz", "Previous quickfix" },
-        },
-        ["]"] = {
-            name = "Next",
-            b = { ":bn<CR>", "Next buffer" },
-            q = { ":cnext<CR>zz", "Next quickfix" },
-        },
+        { "<leader>z",  group = "zettelkasten" },
+        { "<leader>ab", desc = "<cmd>'<,'>.!genericformat --format black<CR>", mode = { "n", "v" } },
+    })
+
+    wk.add({
+        { "[",  group = "Prev" },
+        { "[b", ":bp<CR>",      desc = "Previous buffer" },
+        { "[q", ":cprev<CR>zz", desc = "Previous quickfix" },
+        { "]",  group = "Next" },
+        { "]b", ":bn<CR>",      desc = "Next buffer" },
+        { "]q", ":cnext<CR>zz", desc = "Next quickfix" },
     })
 end
 

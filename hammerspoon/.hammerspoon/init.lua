@@ -3,29 +3,28 @@ hs.loadSpoon("SpoonInstall")
 spoon.SpoonInstall:andUse("AppLauncher", {
     hotkeys = {
         a = "Brain.fm App",
-        b = "Brave Browser",
-        c = "Google Chrome",
+        b = "Arc",
+        c = "Visual Studio Code",
         --- d = ""
-        --- e = "emojis",  -- defined elsewhere
+        --- e = "Raycast:: emojis",
         f = "Finder",
         --- g = "",
         --- h = "",
         i = "Previewer",
         --- j = "",
-        --- k = "",
+        k = "Cursor",
         l = "Linear",
         m = "Spotify",
         n = "Notion",
         --- o = "Raycast:: calendar",
-        p = "System Preferences",
+        --- p = "Raycast:: perplexity",
         q = "Beekeeper Studio",
-        --- r = "Raycast", -- defined elsewhere
+        --- r = "Raycast"
         s = "Slack",
         t = "iTerm",
-        --- u = "",
+        --- u = "Raycast:: Gemini Chat",
         --- v = "Raycast: paste",
-        w = "Spark Desktop",
-        --- x = "",
+        x = "Notion Calendar",
         --- y = "",
         z = "Zotero",
     },

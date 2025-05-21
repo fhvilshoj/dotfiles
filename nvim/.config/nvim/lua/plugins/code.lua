@@ -51,6 +51,7 @@ return {
     },
     {
         "danymat/neogen",
+        config = true,
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
         },
@@ -58,7 +59,8 @@ return {
             { "<leader>cs", ":lua require('neogen').generate()<CR>",                  desc = "Generate Stub" },
             { "<leader>cf", ":lua require('neogen').generate({ type = 'func' })<CR>", desc = "Generate function stub" },
         },
-        config = {
+        opt = {
+            enabled = false,
             languages = {
                 python = {
                     template = {
@@ -100,7 +102,7 @@ return {
             local settings = { capabilities = capabilities }
             lsp_conf.pyright.setup(settings)
             lsp_conf.lua_ls.setup(settings)
-            lsp_conf.tsserver.setup(settings)
+            lsp_conf.ts_ls.setup(settings)
             lsp_conf.tailwindcss.setup(settings)
             lsp_conf.prismals.setup(settings)
 

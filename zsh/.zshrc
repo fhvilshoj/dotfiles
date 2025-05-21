@@ -91,7 +91,7 @@ fi; done;
 echo "${paths[*]}"')"
 export PATH="/Users/fhv/.pyenv/shims:${PATH}"
 export PYENV_SHELL=zsh
-source '/opt/homebrew/Cellar/pyenv/2.4.0/completions/pyenv.zsh'
+source '/opt/homebrew/Cellar/pyenv/2.5.3/completions/pyenv.zsh'
 command pyenv rehash 2>/dev/null
 pyenv() {
   local command
@@ -134,6 +134,15 @@ n ()
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+## TexLive
+# Add /usr/local/texlive/2025/texmf-dist/doc/man to MANPATH.
+# Add /usr/local/texlive/2025/texmf-dist/doc/info to INFOPATH.
+# Most importantly, add /usr/local/texlive/2025/bin/universal-darwin
+
+export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
+export PATH=/usr/local/texlive/2025/bin/universal-darwin:$PATH
+export IPELATEXPATH='/usr/local/texlive/2025/bin/universal-darwin'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -150,3 +159,11 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+# pnpm
+export PNPM_HOME="/Users/fhv/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
