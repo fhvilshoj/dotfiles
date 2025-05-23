@@ -24,8 +24,6 @@ plugins=(
     extract 
     zsh-autosuggestions 
     zsh-syntax-highlighting
-    poetry
-    web-search
 )
 
 # You may need to manually set your language environment
@@ -37,25 +35,20 @@ export EDITOR='nvim'
 # Load aliases if they exist.
 [ -f "/Users/fhv/.config/zsh/.aliases" ] && source "/Users/fhv/.config/zsh/.aliases"
 
-export PATH="/usr/local/opt/python@3.7/bin:$PATH"
 export PATH="/Users/fhv/.local/bin:$PATH"
-export PATH="$PATH:/Users/fhv/command-line-applications/nnn"
-export PATH="$PATH:/Users/fhv/command-line-applications/openapitools"
-export PATH="$PATH:/Users/fhv/Projects/aws_server/bin"
-export PATH="$PATH:/Users/fhv/go/bin"
-
-export OPENAI_API_KEY="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"
+# FIXME
+# export PATH="$PATH:/Users/fhv/Projects/aws_server/bin"
 
 export FZF_DEFAULT_OPS="--extended"
 export FZF_DEFAULT_CMD="fd --type f"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_CMD"
 
-export NNN_BMS="h:~;p:~/PycharmProjects/data-quality-pocs;t:/tmp"
-export NNN_PLUG='f:finder;o:fzopen;v:imgview;j:autojump;p:preview-tui'
+# FIXME
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+
+export NNN_PLUG='o:fzopen;v:imgview;j:autojump;p:preview-tui'
 export NNN_USE_EDITOR=1
 export NNN_FIFO="/tmp/nnn.fifo"
-
-export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 source $ZSH/oh-my-zsh.sh
 
@@ -63,52 +56,14 @@ source $ZSH/oh-my-zsh.sh
 fpath=( ~/.zfunc "${fpath[@]}" )
 compinit
 
-
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/fhv/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/fhv/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/fhv/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/fhv/google-cloud-sdk/completion.zsh.inc'; fi
-
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
 
-
-# PYENV 
-PATH="$(bash --norc -ec 'IFS=:; paths=($PATH);
-for i in ${!paths[@]}; do
-if [[ ${paths[i]} == "''/Users/fhv/.pyenv/shims''" ]]; then unset '\''paths[i]'\'';
-fi; done;
-echo "${paths[*]}"')"
-export PATH="/Users/fhv/.pyenv/shims:${PATH}"
-export PYENV_SHELL=zsh
-source '/opt/homebrew/Cellar/pyenv/2.5.3/completions/pyenv.zsh'
-command pyenv rehash 2>/dev/null
-pyenv() {
-  local command
-  command="${1:-}"
-  if [ "$#" -gt 0 ]; then
-    shift
-  fi
-
-  case "$command" in
-  rehash|shell)
-    eval "$(pyenv "sh-$command" "$@")"
-    ;;
-  *)
-    command pyenv "$command" "$@"
-    ;;
-  esac
-}
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # NNN
 n ()
@@ -132,38 +87,3 @@ n ()
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-## TexLive
-# Add /usr/local/texlive/2025/texmf-dist/doc/man to MANPATH.
-# Add /usr/local/texlive/2025/texmf-dist/doc/info to INFOPATH.
-# Most importantly, add /usr/local/texlive/2025/bin/universal-darwin
-
-export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
-export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
-export PATH=/usr/local/texlive/2025/bin/universal-darwin:$PATH
-export IPELATEXPATH='/usr/local/texlive/2025/bin/universal-darwin'
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/fhv/command-line-applications/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/fhv/command-line-applications/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/fhv/command-line-applications/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/fhv/command-line-applications/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
-# pnpm
-export PNPM_HOME="/Users/fhv/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
