@@ -61,8 +61,7 @@ spoon.SpoonInstall:andUse("WindowScreenLeftAndRight", {
 
 -- Specify the target app names here
 local target_apps = {}
-table.insert(target_apps, { language = "ABC", application = "iTerm" })
-table.insert(target_apps, { language = "Danish", application = "WhatsApp" })
+table.insert(target_apps, { language = "U.S.", application = "iTerm" })
 
 -- Global variable to prevent GC, see https://github.com/Hammerspoon/hammerspoon/issues/681
 force_lang_watcher = nil
@@ -89,3 +88,11 @@ function checkForceLanguage(name, event, app)
 end
 
 initForceLanguage()
+
+-------------------------------------------------------------------------------
+-- iTERM NOTES WINDOW MANAGEMENT
+-------------------------------------------------------------------------------
+
+-- Load and initialize the iTerm Notes window management module
+local itermNotes = require("iterm_notes")
+itermNotes.init()

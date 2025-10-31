@@ -43,6 +43,13 @@ export FZF_DEFAULT_OPS="--extended"
 export FZF_DEFAULT_CMD="fd --type f"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_CMD"
 
+
+# PYENV
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
+
 # FIXME
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
@@ -85,5 +92,21 @@ n ()
     fi
 }
 
+source <(fzf --zsh)
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+eval "$(uv generate-shell-completion zsh)"
+
+
+# pnpm
+export PNPM_HOME="/Users/fhv/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+
+source ~/.safe-chain/scripts/init-posix.sh # Safe-chain Zsh initialization script
+export PATH="/opt/homebrew/bin:$PATH"
