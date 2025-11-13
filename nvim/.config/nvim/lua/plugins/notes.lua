@@ -54,6 +54,7 @@ return {
 				{ "<leader>zm", tk.browse_media, desc = "[Z] Find media " },
 				{ "<leader>za", tk.show_tags, desc = "[Z] Show tags" },
 				{ "<leader>zr", tk.rename_note, desc = "[Z] Rename note " },
+				{ "<leader>zl", ":e ~/Documents/Notes/zettelkasten/202510310842-longform.md<CR>", desc = "[Z] Open longform" },
 				{ "<leader>z", tk.panel, desc = "[Z] Panel" },
 			}
 		end,

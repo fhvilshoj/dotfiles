@@ -47,7 +47,17 @@ function M.register()
         { "<leader>z",  group = "zettelkasten" },
         { "<leader>ab", desc = "<cmd>'<,'>.!genericformat --format black<CR>", mode = { "n", "v" } },
     })
-
+    wk.add({
+      { "<leader>u", group = "Utils" },
+      { "<leader>ud", function() -- Insert current date at cursor
+          local date = os.date('%A, %Y-%b-%d')
+          local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+          vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, {date})
+          vim.api.nvim_win_set_cursor(0, {row, col + #date})
+        end,
+        desc = "Date"
+      }
+    })
     wk.add({
         { "[",  group = "Prev" },
         { "[b", ":bp<CR>",      desc = "Previous buffer" },
