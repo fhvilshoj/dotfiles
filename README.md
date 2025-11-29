@@ -38,9 +38,6 @@ brew install --cask amethyst
 brew install tree
 brew install imagemagick
 brew install libsixel
-
-# Install default
-
 ```
 
 > [!TIP] 
@@ -52,6 +49,7 @@ brew install libsixel
 To make the configurations from this dotfile repository work, use the following commands:
 
 ```
+# This creates needed symlinks to configure applications
 git clone https://github.com/fhvilshoj/dotfiles .dotfiles
 cd .dotfiles
 stow nnn
@@ -61,17 +59,14 @@ stow tmux
 stow ipython
 ```
 
+4. Install [Raycast](https://www.raycast.com)
+    * I've dropped `hammerspoon` and use Raycast to configure jumping between applications instead.
+
+
 ## Neovim
 
-1. Packer or lazy.nvim
-2. Use mason to install all the formatters, linters, ets.
-   ✓ pyright
-   ✓ prettier
-   ✓ black
-   ✓ isort
-   ✓ lua-language-server
-   ✓ stylua
-3. Install NNN
+* Use `lazy.nvim` as package manager.
+* The `telekasten` package requires a subdirectory in `~/Documents` for zettle notes.
 
 ## tmux
 
@@ -80,5 +75,12 @@ To make tmux work properly, make sure to follow these steps.
 1. git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 2. `C-a :source-file ~/.tmux.conf` will make tmux load the plugin manager.
 3. `C-a I` will install the tmux plugins.
+
+## Amethyst
+
+I made no significant changes to the configuration. 
+
+* I use layouts `["Tall", "Fullscreen", "Tall Right"]` 
+* I configured the "Select Fullscreen layout" shortcut to `<meta+shift>B`
 
 
