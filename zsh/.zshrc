@@ -47,16 +47,6 @@ export NNN_FIFO="/tmp/nnn.fifo"
 
 source $ZSH/oh-my-zsh.sh
 
-# # Auto completion
-# fpath=( ~/.zfunc "${fpath[@]}" )
-# compinit
-#
-# eval "$(/opt/homebrew/bin/brew shellenv)"
-#
-# autoload -Uz compinit
-# zstyle ':completion:*' menu select
-# fpath+=~/.zfunc
-
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
