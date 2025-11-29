@@ -33,10 +33,4 @@ return {
             })
         end,
     },
-
-    {
-        "rrethy/vim-hexokinase",
-        build = "make hexokinase",
-        lazy = false,
-    },
 }

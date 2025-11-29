@@ -14,21 +14,10 @@ return {
 		},
 	},
 	{
-		"iamcco/markdown-preview.nvim",
-		build = "cd app && yarn install",
-		ft = { "markdown" },
-		init = function()
-			vim.g.mkdp_filetypes = { "markdown" }
-		end,
-		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		keys = {
-			{ "<leader>mp", ":MarkdownPreview<CR>", desc = "Markdown preview" },
-		},
-	},
-	{
 		"renerocksai/telekasten.nvim",
 		module = "telekasten",
 		keys = function()
+		    local home = vim.fn.expand("~/Documents/markdown")
 			if not pcall(require, "telescope") then
 				return {}
 			end
@@ -54,12 +43,12 @@ return {
 				{ "<leader>zm", tk.browse_media, desc = "[Z] Find media " },
 				{ "<leader>za", tk.show_tags, desc = "[Z] Show tags" },
 				{ "<leader>zr", tk.rename_note, desc = "[Z] Rename note " },
-				{ "<leader>zl", ":e ~/Documents/Notes/zettelkasten/202510310842-longform.md<CR>", desc = "[Z] Open longform" },
+				{ "<leader>zl", ":e " .. home .. "/longform.md<CR>", desc = "[Z] Open longform" },
 				{ "<leader>z", tk.panel, desc = "[Z] Panel" },
 			}
 		end,
 		opts = function()
-			local home = vim.fn.expand("~/Documents/Notes/zettelkasten")
+		    local home = vim.fn.expand("~/Documents/markdown")
 			return {
 				home = home,
 				take_over_my_home = true,
