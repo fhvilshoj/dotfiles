@@ -3,7 +3,9 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		event = "BufRead",
+		-- Load at startup so syntax highlighting works on the initial buffer (e.g. nvim test.md).
+		-- With event = "BufRead", lazy loads after first BufRead fires, so the initial buffer never gets treesitter.
+		lazy = false,
 		config = function()
 			require("config.treesitter")
 		end,

@@ -3,6 +3,18 @@ return {
 		"renerocksai/calendar-vim",
 	},
 	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown", "markdown.mdx" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+		keys = {
+			{ "<leader>mp", "<cmd>MarkdownPreview<CR>", desc = "Markdown preview" },
+			{ "<leader>mP", "<cmd>MarkdownPreviewStop<CR>", desc = "Markdown preview stop" },
+		},
+	},
+	{
 		"mpas/marp-nvim",
 		lazy = true,
 		init = function()
