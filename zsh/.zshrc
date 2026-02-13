@@ -1,5 +1,6 @@
-# Exit early if no TTY (e.g., running zsh -i programmatically)
-[[ -t 0 ]] || return
+# Interactive/TTY shell setup only.
+# Always-on environment exports live in ~/.zshenv.
+[[ -t 0 && -t 1 ]] || return
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -26,16 +27,8 @@ plugins=(
     extract 
 )
 
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-export EDITOR='nvim'
-
 # Load aliases if they exist.
 [ -f "/Users/fhv/.config/zsh/.aliases" ] && source "/Users/fhv/.config/zsh/.aliases"
-
-export PATH="/Users/fhv/.local/bin:$PATH"
 
 export FZF_DEFAULT_OPS="--extended"
 export FZF_DEFAULT_CMD="fd --type f"
@@ -49,10 +42,8 @@ export NNN_FIFO="/tmp/nnn.fifo"
 
 source $ZSH/oh-my-zsh.sh
 
-
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # NNN
 n ()
@@ -83,15 +74,6 @@ eval "$(uv generate-shell-completion zsh)"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-
-# pnpm
-export PNPM_HOME="/Users/fhv/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
