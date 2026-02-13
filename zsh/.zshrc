@@ -1,3 +1,6 @@
+# Exit early if no TTY (e.g., running zsh -i programmatically)
+[[ -t 0 ]] || return
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -18,7 +21,6 @@ zstyle ':omz:update' frequency 7
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(
-    git 
     vi-mode 
     gitignore 
     extract 
@@ -46,6 +48,7 @@ export NNN_USE_EDITOR=1
 export NNN_FIFO="/tmp/nnn.fifo"
 
 source $ZSH/oh-my-zsh.sh
+
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -80,3 +83,22 @@ eval "$(uv generate-shell-completion zsh)"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+
+# pnpm
+export PNPM_HOME="/Users/fhv/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/fhv/.local/share/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/fhv/.local/share/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/fhv/.local/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/fhv/.local/share/google-cloud-sdk/completion.zsh.inc'; fi
+
+# eval "$(~/.local/bin/agent shell-integration zsh)"

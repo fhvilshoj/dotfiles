@@ -10,8 +10,22 @@ return {
 			vim.fn["mkdp#util#install"]()
 		end,
 		keys = {
-			{ "<leader>mp", "<cmd>MarkdownPreview<CR>", desc = "Markdown preview" },
-			{ "<leader>mP", "<cmd>MarkdownPreviewStop<CR>", desc = "Markdown preview stop" },
+			{
+				"<leader>mp",
+				function()
+					require("lazy").load({ plugins = { "iamcco/markdown-preview.nvim" }, wait = true })
+					vim.cmd.MarkdownPreview()
+				end,
+				desc = "Markdown preview",
+			},
+			{
+				"<leader>mP",
+				function()
+					require("lazy").load({ plugins = { "iamcco/markdown-preview.nvim" }, wait = true })
+					vim.cmd.MarkdownPreviewStop()
+				end,
+				desc = "Markdown preview stop",
+			},
 		},
 	},
 	{

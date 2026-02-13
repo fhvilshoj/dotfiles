@@ -6,6 +6,22 @@ alias lg="lazygit"
 alias cl="clear"
 
 alias pf="fzf --preview='bat --color=always --style=numbers --line-range=:500 {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
+alias sb="npx supabase"
 
 pwl() { echo "$(pwd)/$1"; echo "$(pwd)/$1" | pbcopy }
 
+urlenc() {
+  if [ $# -gt 0 ]; then
+    uvx python -c 'import urllib.parse, sys; print(urllib.parse.quote_plus(" ".join(sys.argv[1:])))' "$@"
+  else
+    uvx python -c 'import sys, urllib.parse; s=sys.stdin.read(); s=s[:-1] if s.endswith("\n") else s; print(urllib.parse.quote_plus(s))'
+  fi
+}
+
+export_staging_db_url() {
+  export STAGING_DB_URL="postgresql://postgres.hotphybyjhkdevshnknc:$(op items get zam6e3c6qqtqyosgmfkubnxpie --fields 'Development DB Password' --reveal | urlenc)@aws-1-eu-west-1.pooler.supabase.com:5432/postgres"
+}
+
+export_prod_db_url() {
+  export PROD_DB_URL="postgresql://postgres.hxiyworunbsspkmomrzk:$(op items get zam6e3c6qqtqyosgmfkubnxpie --fields 'Production DB Password' --reveal)@aws-0-eu-north-1.pooler.supabase.com:5432/postgres"
+}
